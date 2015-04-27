@@ -42,7 +42,7 @@
 <rfc category="exp" docName="draft-brown-epp-auxcontact-00" ipr="trust200902">
 
   <front>
-    <title abbrev="Registration Type Extension">Auxiliary Contact Extension for
+    <title abbrev="Auxiliary Contacts Extension">Auxiliary Contact Extension for
     the Extensible Provisioning Protocol (EPP)</title>
 
     <author fullname="Gavin Brown" initials="G" surname="Brown">
