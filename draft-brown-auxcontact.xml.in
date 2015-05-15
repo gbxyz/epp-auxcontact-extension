@@ -174,7 +174,21 @@
           <t>This extension adds elements to the EPP &lt;update&gt; command.
 	  No additional elements are defined for the EPP &lt;update&gt; response.</t>
 
-          <t>TODO: finish this</t>
+          <t>When submitting an &lt;update&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;auxcontact:update&gt;
+          element.</t>
+
+	  <t>The &lt;auxcontact:update&gt; element contains the following child
+	  elements:</t>
+	  <t><list>
+		  <t>an OPTIONAL &lt;auxcontact:rem&gt; element, containing zero
+		  or more &lt;auxcontact:contact&gt; elements, that are to be
+		  removed from the domain;</t>
+
+		  <t>an OPTIONAL &lt;auxcontact:add&gt; element, containing zero
+		  or more &lt;auxcontact:contact&gt; elements, that are to be
+		  added to the domain.</t>
+	  </list></t>
 
           <t>Example &lt;update&gt; command:</t>
 

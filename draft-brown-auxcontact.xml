@@ -22,7 +22,7 @@
 <rfc category="exp" docName="draft-brown-epp-auxcontact-00" ipr="trust200902">
 
   <front>
-    <title abbrev="Registration Type Extension">Auxiliary Contact Extension for
+    <title abbrev="Auxiliary Contacts Extension">Auxiliary Contact Extension for
     the Extensible Provisioning Protocol (EPP)</title>
 
     <author fullname="Gavin Brown" initials="G" surname="Brown">
@@ -154,10 +154,10 @@ S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
 S:       &lt;auxcontact:infData
 S:         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1"&gt;
-S:         &lt;auxcontact:contact
-S: 	  type="abuse"&gt;sh8013&lt;/auxcontact:contact&gt;
-S:         &lt;auxcontact:contact
-S: 	  type="dns-operator"&gt;ClientZ&lt;/auxcontact:contact&gt;
+S:         &lt;auxcontact:contact type="abuse"&gt;
+S:           sh8013&lt;/auxcontact:contact&gt;
+S:         &lt;auxcontact:contact type="dns-operator"&gt;
+S:           ClientZ&lt;/auxcontact:contact&gt;
 S:       &lt;/auxcontact:infData&gt;
 S:     &lt;/extension&gt;
 S:     &lt;trID&gt;
@@ -195,7 +195,7 @@ C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
 C:   &lt;command&gt;
 C:     &lt;create&gt;
 C:       &lt;domain:create
-C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:           xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
 C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
 C:         &lt;domain:period unit="y"&gt;2&lt;/domain:period&gt;
 C:         &lt;domain:ns&gt;
@@ -213,10 +213,10 @@ C:     &lt;/create&gt;
 C:     &lt;extension&gt;
 C:       &lt;auxcontact:create
 C:         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1"&gt;
-C:         &lt;auxcontact:contact
-C: 	  type="abuse"&gt;sh8013&lt;/auxcontact:contact&gt;
-C:         &lt;auxcontact:contact
-C: 	  type="dns-operator"&gt;ClientZ&lt;/auxcontact:contact&gt;
+C:         &lt;auxcontact:contact type="abuse"&gt;
+C:           sh8013&lt;/auxcontact:contact&gt;
+C:         &lt;auxcontact:contact type="dns-operator"&gt;
+C:           ClientZ&lt;/auxcontact:contact&gt;
 C:       &lt;/auxcontact:create&gt;
 C:     &lt;/extension&gt;
 C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
@@ -230,7 +230,21 @@ C: &lt;/epp&gt;
           <t>This extension adds elements to the EPP &lt;update&gt; command.
 	  No additional elements are defined for the EPP &lt;update&gt; response.</t>
 
-          <t>TODO: finish this</t>
+          <t>When submitting an &lt;update&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;auxcontact:update&gt;
+          element.</t>
+
+	  <t>The &lt;auxcontact:update&gt; element contains the following child
+	  elements:</t>
+	  <t><list>
+		  <t>an OPTIONAL &lt;auxcontact:rem&gt; element, containing zero
+		  or more &lt;auxcontact:contact&gt; elements, that are to be
+		  removed from the domain;</t>
+
+		  <t>an OPTIONAL &lt;auxcontact:add&gt; element, containing zero
+		  or more &lt;auxcontact:contact&gt; elements, that are to be
+		  added to the domain.</t>
+	  </list></t>
 
           <t>Example &lt;update&gt; command:</t>
 
@@ -249,11 +263,11 @@ C:       &lt;auxcontact:update
 C:         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1"&gt;
 C:         &lt;auxcontact:rem&gt;
 C:           &lt;auxcontact:contact
-C: 	    type="dns-operator"&gt;ClientZ&lt;/auxcontact:contact&gt;
+C:             type="dns-operator"&gt;ClientZ&lt;/auxcontact:contact&gt;
 C:         &lt;/auxcontact:rem&gt;
 C:         &lt;auxcontact:add&gt;
 C:           &lt;auxcontact:contact
-C: 	    type="dns-operator"&gt;ClientXYZ&lt;/auxcontact:contact&gt;
+C:             type="dns-operator"&gt;ClientXYZ&lt;/auxcontact:contact&gt;
 C:         &lt;/auxcontact:add&gt;
 C:       &lt;/auxcontact:update&gt;
 C:     &lt;/extension&gt;
@@ -383,7 +397,7 @@ BEGIN
             &lt;element name="contact"
               type="auxcontact:contactType"
               minOccurs="0"
-	      maxOccurs="unbounded" /&gt;
+              maxOccurs="unbounded" /&gt;
     &lt;/sequence&gt;
   &lt;/complexType&gt;
 

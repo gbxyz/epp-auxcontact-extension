@@ -3,7 +3,7 @@
   <command>
     <create>
       <domain:create
-        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+          xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
         <domain:name>example.com</domain:name>
         <domain:period unit="y">2</domain:period>
         <domain:ns>
@@ -21,10 +21,10 @@
     <extension>
       <auxcontact:create
         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1">
-        <auxcontact:contact
-	  type="abuse">sh8013</auxcontact:contact>
-        <auxcontact:contact
-	  type="dns-operator">ClientZ</auxcontact:contact>
+        <auxcontact:contact type="abuse">
+          sh8013</auxcontact:contact>
+        <auxcontact:contact type="dns-operator">
+          ClientZ</auxcontact:contact>
       </auxcontact:create>
     </extension>
     <clTRID>ABC-12345</clTRID>

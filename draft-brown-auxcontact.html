@@ -146,8 +146,8 @@
 <table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
-<tr><td class="header">Intended status: Experimental</td><td class="header">April 27, 2015</td></tr>
-<tr><td class="header">Expires: October 29, 2015</td><td class="header">&nbsp;</td></tr>
+<tr><td class="header">Intended status: Experimental</td><td class="header">April 2015</td></tr>
+<tr><td class="header">Expires: October 3, 2015</td><td class="header">&nbsp;</td></tr>
 </table></td></tr></table>
 <h1><br />Auxiliary Contact Extension for
     the Extensible Provisioning Protocol (EPP)<br />draft-brown-epp-auxcontact-00</h1>
@@ -172,7 +172,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on October 29, 2015.</p>
+This Internet-Draft will expire on October 3, 2015.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -344,10 +344,10 @@ S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
 S:       &lt;auxcontact:infData
 S:         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1"&gt;
-S:         &lt;auxcontact:contact
-S: 	  type="abuse"&gt;sh8013&lt;/auxcontact:contact&gt;
-S:         &lt;auxcontact:contact
-S: 	  type="dns-operator"&gt;ClientZ&lt;/auxcontact:contact&gt;
+S:         &lt;auxcontact:contact type="abuse"&gt;
+S:           sh8013&lt;/auxcontact:contact&gt;
+S:         &lt;auxcontact:contact type="dns-operator"&gt;
+S:           ClientZ&lt;/auxcontact:contact&gt;
 S:       &lt;/auxcontact:infData&gt;
 S:     &lt;/extension&gt;
 S:     &lt;trID&gt;
@@ -387,7 +387,7 @@ C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
 C:   &lt;command&gt;
 C:     &lt;create&gt;
 C:       &lt;domain:create
-C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:           xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
 C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
 C:         &lt;domain:period unit="y"&gt;2&lt;/domain:period&gt;
 C:         &lt;domain:ns&gt;
@@ -405,10 +405,10 @@ C:     &lt;/create&gt;
 C:     &lt;extension&gt;
 C:       &lt;auxcontact:create
 C:         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1"&gt;
-C:         &lt;auxcontact:contact
-C: 	  type="abuse"&gt;sh8013&lt;/auxcontact:contact&gt;
-C:         &lt;auxcontact:contact
-C: 	  type="dns-operator"&gt;ClientZ&lt;/auxcontact:contact&gt;
+C:         &lt;auxcontact:contact type="abuse"&gt;
+C:           sh8013&lt;/auxcontact:contact&gt;
+C:         &lt;auxcontact:contact type="dns-operator"&gt;
+C:           ClientZ&lt;/auxcontact:contact&gt;
 C:       &lt;/auxcontact:create&gt;
 C:     &lt;/extension&gt;
 C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
@@ -423,8 +423,25 @@ EPP &lt;update&gt; Command</h3>
 <p>This extension adds elements to the EPP &lt;update&gt; command.
 	  No additional elements are defined for the EPP &lt;update&gt; response.
 </p>
-<p>TODO: finish this
+<p>When submitting an &lt;update&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;auxcontact:update&gt;
+          element.
 </p>
+<p>The &lt;auxcontact:update&gt; element contains the following child
+	  elements:
+</p>
+<p></p>
+<blockquote class="text">
+<p>an OPTIONAL &lt;auxcontact:rem&gt; element, containing zero
+		  or more &lt;auxcontact:contact&gt; elements, that are to be
+		  removed from the domain;
+</p>
+<p>an OPTIONAL &lt;auxcontact:add&gt; element, containing zero
+		  or more &lt;auxcontact:contact&gt; elements, that are to be
+		  added to the domain.
+</p>
+</blockquote>
+
 <p>Example &lt;update&gt; command:
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
@@ -441,11 +458,11 @@ C:       &lt;auxcontact:update
 C:         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1"&gt;
 C:         &lt;auxcontact:rem&gt;
 C:           &lt;auxcontact:contact
-C: 	    type="dns-operator"&gt;ClientZ&lt;/auxcontact:contact&gt;
+C:             type="dns-operator"&gt;ClientZ&lt;/auxcontact:contact&gt;
 C:         &lt;/auxcontact:rem&gt;
 C:         &lt;auxcontact:add&gt;
 C:           &lt;auxcontact:contact
-C: 	    type="dns-operator"&gt;ClientXYZ&lt;/auxcontact:contact&gt;
+C:             type="dns-operator"&gt;ClientXYZ&lt;/auxcontact:contact&gt;
 C:         &lt;/auxcontact:add&gt;
 C:       &lt;/auxcontact:update&gt;
 C:     &lt;/extension&gt;
@@ -575,7 +592,7 @@ BEGIN
             &lt;element name="contact"
               type="auxcontact:contactType"
               minOccurs="0"
-	      maxOccurs="unbounded" /&gt;
+              maxOccurs="unbounded" /&gt;
     &lt;/sequence&gt;
   &lt;/complexType&gt;
 

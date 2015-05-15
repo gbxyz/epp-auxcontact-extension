@@ -12,11 +12,11 @@
         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1">
         <auxcontact:rem>
           <auxcontact:contact
-	    type="dns-operator">ClientZ</auxcontact:contact>
+            type="dns-operator">ClientZ</auxcontact:contact>
         </auxcontact:rem>
         <auxcontact:add>
           <auxcontact:contact
-	    type="dns-operator">ClientXYZ</auxcontact:contact>
+            type="dns-operator">ClientXYZ</auxcontact:contact>
         </auxcontact:add>
       </auxcontact:update>
     </extension>

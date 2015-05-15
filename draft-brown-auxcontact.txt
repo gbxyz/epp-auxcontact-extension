@@ -3,8 +3,8 @@
 
 Internet Engineering Task Force                                 G. Brown
 Internet-Draft                                      CentralNic Group plc
-Intended status: Experimental                             April 27, 2015
-Expires: October 29, 2015
+Intended status: Experimental                                 April 2015
+Expires: October 3, 2015
 
 
   Auxiliary Contact Extension for the Extensible Provisioning Protocol
@@ -31,7 +31,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 29, 2015.
+   This Internet-Draft will expire on October 3, 2015.
 
 Copyright Notice
 
@@ -52,9 +52,9 @@ Copyright Notice
 
 
 
-Brown                   Expires October 29, 2015                [Page 1]
+Brown                    Expires October 3, 2015                [Page 1]
 
-Internet-Draft         Registration Type Extension            April 2015
+Internet-Draft        Auxiliary Contacts Extension            April 2015
 
 
 Table of Contents
@@ -108,9 +108,9 @@ Table of Contents
 
 
 
-Brown                   Expires October 29, 2015                [Page 2]
+Brown                    Expires October 3, 2015                [Page 2]
 
-Internet-Draft         Registration Type Extension            April 2015
+Internet-Draft        Auxiliary Contacts Extension            April 2015
 
 
 1.  Introduction
@@ -164,9 +164,9 @@ Internet-Draft         Registration Type Extension            April 2015
 
 
 
-Brown                   Expires October 29, 2015                [Page 3]
+Brown                    Expires October 3, 2015                [Page 3]
 
-Internet-Draft         Registration Type Extension            April 2015
+Internet-Draft        Auxiliary Contacts Extension            April 2015
 
 
    in [RFC5730].
@@ -220,9 +220,9 @@ Internet-Draft         Registration Type Extension            April 2015
 
 
 
-Brown                   Expires October 29, 2015                [Page 4]
+Brown                    Expires October 3, 2015                [Page 4]
 
-Internet-Draft         Registration Type Extension            April 2015
+Internet-Draft        Auxiliary Contacts Extension            April 2015
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -259,10 +259,10 @@ Internet-Draft         Registration Type Extension            April 2015
    S:     <extension>
    S:       <auxcontact:infData
    S:         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1">
-   S:         <auxcontact:contact
-   S:        type="abuse">sh8013</auxcontact:contact>
-   S:         <auxcontact:contact
-   S:        type="dns-operator">ClientZ</auxcontact:contact>
+   S:         <auxcontact:contact type="abuse">
+   S:           sh8013</auxcontact:contact>
+   S:         <auxcontact:contact type="dns-operator">
+   S:           ClientZ</auxcontact:contact>
    S:       </auxcontact:infData>
    S:     </extension>
    S:     <trID>
@@ -276,9 +276,9 @@ Internet-Draft         Registration Type Extension            April 2015
 
 
 
-Brown                   Expires October 29, 2015                [Page 5]
+Brown                    Expires October 3, 2015                [Page 5]
 
-Internet-Draft         Registration Type Extension            April 2015
+Internet-Draft        Auxiliary Contacts Extension            April 2015
 
 
 3.2.  EPP Transform Commands
@@ -332,9 +332,9 @@ Internet-Draft         Registration Type Extension            April 2015
 
 
 
-Brown                   Expires October 29, 2015                [Page 6]
+Brown                    Expires October 3, 2015                [Page 6]
 
-Internet-Draft         Registration Type Extension            April 2015
+Internet-Draft        Auxiliary Contacts Extension            April 2015
 
 
    C: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -342,7 +342,7 @@ Internet-Draft         Registration Type Extension            April 2015
    C:   <command>
    C:     <create>
    C:       <domain:create
-   C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+   C:           xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
    C:         <domain:name>example.com</domain:name>
    C:         <domain:period unit="y">2</domain:period>
    C:         <domain:ns>
@@ -360,10 +360,10 @@ Internet-Draft         Registration Type Extension            April 2015
    C:     <extension>
    C:       <auxcontact:create
    C:         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1">
-   C:         <auxcontact:contact
-   C:        type="abuse">sh8013</auxcontact:contact>
-   C:         <auxcontact:contact
-   C:        type="dns-operator">ClientZ</auxcontact:contact>
+   C:         <auxcontact:contact type="abuse">
+   C:           sh8013</auxcontact:contact>
+   C:         <auxcontact:contact type="dns-operator">
+   C:           ClientZ</auxcontact:contact>
    C:       </auxcontact:create>
    C:     </extension>
    C:     <clTRID>ABC-12345</clTRID>
@@ -375,23 +375,28 @@ Internet-Draft         Registration Type Extension            April 2015
    This extension adds elements to the EPP <update> command.  No
    additional elements are defined for the EPP <update> response.
 
-   TODO: finish this
+   When submitting an <update> command to the server, the client MAY
+   include in the <extension> element a <auxcontact:update> element.
+
+   The <auxcontact:update> element contains the following child
+   elements:
+
+      an OPTIONAL <auxcontact:rem> element, containing zero or more
+      <auxcontact:contact> elements, that are to be removed from the
+      domain;
+
+
+
+
+Brown                    Expires October 3, 2015                [Page 7]
+
+Internet-Draft        Auxiliary Contacts Extension            April 2015
+
+
+      an OPTIONAL <auxcontact:add> element, containing zero or more
+      <auxcontact:contact> elements, that are to be added to the domain.
 
    Example <update> command:
-
-
-
-
-
-
-
-
-
-
-Brown                   Expires October 29, 2015                [Page 7]
-
-Internet-Draft         Registration Type Extension            April 2015
-
 
    C: <?xml version="1.0" encoding="utf-8" standalone="no"?>
    C: <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -407,11 +412,11 @@ Internet-Draft         Registration Type Extension            April 2015
    C:         xmlns:auxcontact="urn:ietf:params:xml:ns:auxcontact-0.1">
    C:         <auxcontact:rem>
    C:           <auxcontact:contact
-   C:          type="dns-operator">ClientZ</auxcontact:contact>
+   C:             type="dns-operator">ClientZ</auxcontact:contact>
    C:         </auxcontact:rem>
    C:         <auxcontact:add>
    C:           <auxcontact:contact
-   C:          type="dns-operator">ClientXYZ</auxcontact:contact>
+   C:             type="dns-operator">ClientXYZ</auxcontact:contact>
    C:         </auxcontact:add>
    C:       </auxcontact:update>
    C:     </extension>
@@ -436,18 +441,18 @@ Internet-Draft         Registration Type Extension            April 2015
    o  Redistributions of source code must retain the above copyright
       notice, this list of conditions and the following disclaimer.
 
+
+
+
+Brown                    Expires October 3, 2015                [Page 8]
+
+Internet-Draft        Auxiliary Contacts Extension            April 2015
+
+
    o  Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in
       the documentation and/or other materials provided with the
       distribution.
-
-
-
-
-Brown                   Expires October 29, 2015                [Page 8]
-
-Internet-Draft         Registration Type Extension            April 2015
-
 
    o  Neither the name of Internet Society, IETF or IETF Trust, nor the
       names of specific contributors, may be used to endorse or promote
@@ -492,19 +497,19 @@ Internet-Draft         Registration Type Extension            April 2015
        <simpleContent>
          <extension base="eppcom:clIDType">
             <attribute name="type" type="eppcom:minTokenType" />
+
+
+
+Brown                    Expires October 3, 2015                [Page 9]
+
+Internet-Draft        Auxiliary Contacts Extension            April 2015
+
+
          </extension>
        </simpleContent>
      </complexType>
 
      <!--
-
-
-
-Brown                   Expires October 29, 2015                [Page 9]
-
-Internet-Draft         Registration Type Extension            April 2015
-
-
      Child elements found in EPP commands and responses
      -->
      <element name="infData" type="auxcontact:infDataType" />
@@ -548,19 +553,19 @@ Internet-Draft         Registration Type Extension            April 2015
      -->
      <complexType name="addRemType">
        <sequence>
+
+
+
+Brown                    Expires October 3, 2015               [Page 10]
+
+Internet-Draft        Auxiliary Contacts Extension            April 2015
+
+
                <element name="contact"
                  type="auxcontact:contactType"
                  minOccurs="0"
                  maxOccurs="unbounded" />
        </sequence>
-
-
-
-Brown                   Expires October 29, 2015               [Page 10]
-
-Internet-Draft         Registration Type Extension            April 2015
-
-
      </complexType>
 
    </schema>
@@ -604,18 +609,18 @@ Internet-Draft         Registration Type Extension            April 2015
 
    Reference: (insert reference to RFC version of this document)
 
+
+
+
+Brown                    Expires October 3, 2015               [Page 11]
+
+Internet-Draft        Auxiliary Contacts Extension            April 2015
+
+
    Registrant Name and Email Address: See the "Author's Address" section
    of this document.
 
    TLDs: any
-
-
-
-
-Brown                   Expires October 29, 2015               [Page 11]
-
-Internet-Draft         Registration Type Extension            April 2015
-
 
    IPR Disclosure: none
 
@@ -663,10 +668,5 @@ Author's Address
 
 
 
-
-
-
-
-
-Brown                   Expires October 29, 2015               [Page 12]
+Brown                    Expires October 3, 2015               [Page 12]
 

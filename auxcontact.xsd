@@ -74,7 +74,7 @@
             <element name="contact"
               type="auxcontact:contactType"
               minOccurs="0"
-	      maxOccurs="unbounded" />
+              maxOccurs="unbounded" />
     </sequence>
   </complexType>
 
