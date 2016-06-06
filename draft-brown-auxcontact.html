@@ -273,7 +273,9 @@ Extension Elements</h3>
 <p>This document defines a new element, &lt;auxcontact:contact&gt;. This
       element is identical to the &lt;domain:contact&gt; element described
       in <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>, with the exception that the "type"
-      attribute can take any value.
+      attribute can take any value, with the exception that it MUST NOT contain
+      any of the possible values of the "type" attribute of &lt;domain:contact&gt;
+      elements, i.e., "admin", "tech" or "billing".
 </p>
 <p>The semantics of the "type" attribute are a matter of mutual agreement
       between client and server and are not discussed in this document.
@@ -661,15 +663,15 @@ EPP Extension Registry</h3>
 <h3>6.&nbsp;Normative References</h3>
 <table width="99%" border="0">
 <tr><td class="author-text" valign="top"><a name="RFC2119">[RFC2119]</a></td>
-<td class="author-text"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997 (<a href="http://www.rfc-editor.org/rfc/rfc2119.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2119.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2119.xml">XML</a>).</td></tr>
+<td class="author-text">Bradner, S., &ldquo;<a href="http://www.rfc-editor.org/info/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, DOI&nbsp;10.17487/RFC2119, March&nbsp;1997.</td></tr>
 <tr><td class="author-text" valign="top"><a name="RFC3688">[RFC3688]</a></td>
-<td class="author-text">Mealling, M., &ldquo;<a href="http://tools.ietf.org/html/rfc3688">The IETF XML Registry</a>,&rdquo; BCP&nbsp;81, RFC&nbsp;3688, January&nbsp;2004 (<a href="http://www.rfc-editor.org/rfc/rfc3688.txt">TXT</a>).</td></tr>
+<td class="author-text">Mealling, M., &ldquo;<a href="http://www.rfc-editor.org/info/rfc3688">The IETF XML Registry</a>,&rdquo; BCP&nbsp;81, RFC&nbsp;3688, DOI&nbsp;10.17487/RFC3688, January&nbsp;2004.</td></tr>
 <tr><td class="author-text" valign="top"><a name="RFC5730">[RFC5730]</a></td>
-<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc5730">Extensible Provisioning Protocol (EPP)</a>,&rdquo; STD&nbsp;69, RFC&nbsp;5730, August&nbsp;2009 (<a href="http://www.rfc-editor.org/rfc/rfc5730.txt">TXT</a>).</td></tr>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://www.rfc-editor.org/info/rfc5730">Extensible Provisioning Protocol (EPP)</a>,&rdquo; STD&nbsp;69, RFC&nbsp;5730, DOI&nbsp;10.17487/RFC5730, August&nbsp;2009.</td></tr>
 <tr><td class="author-text" valign="top"><a name="RFC5731">[RFC5731]</a></td>
-<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc5731">Extensible Provisioning Protocol (EPP) Domain Name Mapping</a>,&rdquo; STD&nbsp;69, RFC&nbsp;5731, August&nbsp;2009 (<a href="http://www.rfc-editor.org/rfc/rfc5731.txt">TXT</a>).</td></tr>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://www.rfc-editor.org/info/rfc5731">Extensible Provisioning Protocol (EPP) Domain Name Mapping</a>,&rdquo; STD&nbsp;69, RFC&nbsp;5731, DOI&nbsp;10.17487/RFC5731, August&nbsp;2009.</td></tr>
 <tr><td class="author-text" valign="top"><a name="RFC7451">[RFC7451]</a></td>
-<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc7451">Extension Registry for the Extensible Provisioning Protocol</a>,&rdquo; RFC&nbsp;7451, February&nbsp;2015 (<a href="http://www.rfc-editor.org/rfc/rfc7451.txt">TXT</a>).</td></tr>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://www.rfc-editor.org/info/rfc7451">Extension Registry for the Extensible Provisioning Protocol</a>,&rdquo; RFC&nbsp;7451, DOI&nbsp;10.17487/RFC7451, February&nbsp;2015.</td></tr>
 </table>
 
 <a name="rfc.authors"></a><br /><hr />

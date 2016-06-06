@@ -113,7 +113,9 @@
       <t>This document defines a new element, &lt;auxcontact:contact&gt;. This
       element is identical to the &lt;domain:contact&gt; element described
       in <xref target="RFC5731"/>, with the exception that the "type"
-      attribute can take any value.</t>
+      attribute can take any value, with the exception that it MUST NOT contain
+      any of the possible values of the "type" attribute of &lt;domain:contact&gt;
+      elements, i.e., "admin", "tech" or "billing".</t>
       <t>The semantics of the "type" attribute are a matter of mutual agreement
       between client and server and are not discussed in this document.</t>
     </section>
