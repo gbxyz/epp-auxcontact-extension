@@ -192,6 +192,10 @@
 		  added to the domain.</t>
 	  </list></t>
 
+	  <t>The order of the &lt;auxcontact:rem&gt; and &lt;auxcontact:add&gt;
+          elements is significant, where the server MUST first remove the existing
+          elements prior to adding the new elements.</t>
+
           <t>Example &lt;update&gt; command:</t>
 
           <figure><artwork>

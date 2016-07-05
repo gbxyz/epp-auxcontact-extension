@@ -396,6 +396,10 @@ Internet-Draft        Auxiliary Contacts Extension            April 2015
       an OPTIONAL <auxcontact:add> element, containing zero or more
       <auxcontact:contact> elements, that are to be added to the domain.
 
+   The order of the <auxcontact:rem> and <auxcontact:add> elements is
+   significant, where the server MUST first remove the existing elements
+   prior to adding the new elements.
+
    Example <update> command:
 
    C: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -438,16 +442,15 @@ Internet-Draft        Auxiliary Contacts Extension            April 2015
    modification, are permitted provided that the following conditions
    are met:
 
-   o  Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-
-
 
 
 Brown                    Expires October 3, 2015                [Page 8]
 
 Internet-Draft        Auxiliary Contacts Extension            April 2015
 
+
+   o  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
 
    o  Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in
@@ -494,9 +497,6 @@ Internet-Draft        Auxiliary Contacts Extension            April 2015
        can contain arbitrary tokens
      -->
      <complexType name="contactType">
-       <simpleContent>
-         <extension base="eppcom:clIDType">
-            <attribute name="type" type="eppcom:minTokenType" />
 
 
 
@@ -505,6 +505,9 @@ Brown                    Expires October 3, 2015                [Page 9]
 Internet-Draft        Auxiliary Contacts Extension            April 2015
 
 
+       <simpleContent>
+         <extension base="eppcom:clIDType">
+            <attribute name="type" type="eppcom:minTokenType" />
          </extension>
        </simpleContent>
      </complexType>
@@ -550,9 +553,6 @@ Internet-Draft        Auxiliary Contacts Extension            April 2015
 
      <!--
        <add> and <rem> elements in <update> commands
-     -->
-     <complexType name="addRemType">
-       <sequence>
 
 
 
@@ -561,6 +561,9 @@ Brown                    Expires October 3, 2015               [Page 10]
 Internet-Draft        Auxiliary Contacts Extension            April 2015
 
 
+     -->
+     <complexType name="addRemType">
+       <sequence>
                <element name="contact"
                  type="auxcontact:contactType"
                  minOccurs="0"
@@ -607,15 +610,14 @@ Internet-Draft        Auxiliary Contacts Extension            April 2015
 
    Document status: Experimental
 
-   Reference: (insert reference to RFC version of this document)
-
-
 
 
 Brown                    Expires October 3, 2015               [Page 11]
 
 Internet-Draft        Auxiliary Contacts Extension            April 2015
 
+
+   Reference: (insert reference to RFC version of this document)
 
    Registrant Name and Email Address: See the "Author's Address" section
    of this document.
@@ -652,8 +654,6 @@ Internet-Draft        Auxiliary Contacts Extension            April 2015
    [RFC7451]  Hollenbeck, S., "Extension Registry for the Extensible
               Provisioning Protocol", RFC 7451, DOI 10.17487/RFC7451,
               February 2015, <http://www.rfc-editor.org/info/rfc7451>.
-
-
 
 
 
